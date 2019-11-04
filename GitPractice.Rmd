@@ -54,7 +54,7 @@ Create a new variable called "num_powers" in the powers data set counting the nu
 
 ```{r}
 
-powers_sum<- powers %>%
+powers<- powers %>%
    replace(is.na(.), 0) %>%
    mutate(num_powers = rowSums(.[2:168]))
 
@@ -71,6 +71,12 @@ hero_and_power<- data.frame(powers_sum$hero_names,powers_sum$num_powers)
 Join the two data sets together by character name and only keep name, publisher, and number of powers
 
 ```{r}
+
+hero1<- select(heroes, name, Publisher)
+power1<- select(powers, hero_names, num_powers)
+
+
+
 
 ```
 
