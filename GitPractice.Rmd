@@ -40,8 +40,9 @@ To answer this question, you will need to:
 Filter the heroes data to only include Marvel or DC. You can also eliminate the DC version of Captain Marvel.
 
 ```{r}
+view(heroes)
 
-#edit2
+vector3<- filter(heroes, Publisher == "Marvel Comics"| Publisher == "DC Comics")
 
 
 ```
@@ -52,6 +53,13 @@ Filter the heroes data to only include Marvel or DC. You can also eliminate the 
 Create a new variable called "num_powers" in the powers data set counting the number of powers each character has. (This is tricky; there are multiple ways to approach this. You may want to play with the rowSums() function, or see Boern's answer [here](https://stackoverflow.com/questions/28873057/sum-across-multiple-columns-with-dplyr)).
 
 ```{r}
+
+powers_sum<- powers %>%
+   replace(is.na(.), 0) %>%
+   mutate(num_powers = rowSums(.[2:168]))
+
+
+hero_and_power<- data.frame(powers_sum$hero_names,powers_sum$num_powers)
 
 ```
 
@@ -110,6 +118,9 @@ This is R for Data Science Exercise 5.5.
 1. Currently dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Convert them to a more convenient representation of number of minutes since midnight. (Hint: use modulo arithmetic and integer division; this is tricky!)
 
 ```{r}
+
+
+
 
 ```
 
